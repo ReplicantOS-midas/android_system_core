@@ -58,12 +58,9 @@ class GateKeeperProxy : public BnGateKeeperService {
 public:
     GateKeeperProxy() {
         clear_state_if_needed_done = false;
-        hw_device = IGatekeeper::getService();
-
-        if (hw_device == nullptr) {
-            ALOGW("falling back to software GateKeeper");
-            soft_device.reset(new SoftGateKeeperDevice());
-        }
+        ALOGW("Using hacked built-in software GateKeeper");
+        ALOGW("FIXME: Use proper software implementation instead");
+        soft_device.reset(new SoftGateKeeperDevice());
     }
 
     virtual ~GateKeeperProxy() {
